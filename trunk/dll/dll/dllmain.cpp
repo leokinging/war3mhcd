@@ -1,4 +1,4 @@
-// dllmain.cpp : ¶¨Òå DLL Ó¦ÓÃ³ÌĞòµÄÈë¿Úµã¡£
+// dllmain.cpp : å®šä¹‰ DLL åº”ç”¨ç¨‹åºçš„å…¥å£ç‚¹ã€‚
 #include "stdafx.h"
 
 DWORD JGetHeroLevel = (DWORD)0x3c7950;
@@ -255,7 +255,7 @@ void GetUnit(int k)
 		if(i > s_unit[0])
 		{
 			s_unit[++s_unit[0]] = k;
-			sprintf(tmp, "µÃµ½Ó¢ĞÛID : %d", k);
+			sprintf(tmp, "å¾—åˆ°è‹±é›„ID : %d", k);
 			if(!hasgotplayer)
 			{
 				GetAllPlayer();
@@ -315,7 +315,7 @@ int WINAPI CheckThread(LPVOID xx)
 			nowtime = GetTickCount();
 			if(k && nowtime - s_selecttime[i][j] > 1000  && nowtime - s_visibletime[i][j] > 1000)
 			{
-				sprintf(tmp, "Íæ¼Ò±àºÅ£º%d Íæ¼ÒÃû£º%s Ñ¡ÖĞ²»¿É¼ûµ¥Î»£º%d Ê±¼ä£º%d", j, s_playername[j], tunit, nowtime);
+				sprintf(tmp, "ç©å®¶ç¼–å·ï¼š%d ç©å®¶åï¼š%s é€‰ä¸­ä¸å¯è§å•ä½ï¼š%d æ—¶é—´ï¼š%d", j, s_playername[j], tunit, nowtime);
 				SendString(tmp);
 				OutputDebugString(tmp);
 			}
@@ -473,7 +473,7 @@ void DllLoad()
 	CreateThread(0, 0, (LPTHREAD_START_ROUTINE)Watcher, (LPVOID)0, 0, 0);
 	
 
-	SendString("ÒÑÆô¶¯");
+	SendString("å·²å¯åŠ¨");
 	sprintf(tm, "MainThreadId : %d", ThreadId);
 	OutputDebugString(tm);
 	OutputDebugString("DllLoad");

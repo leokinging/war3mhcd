@@ -16,7 +16,7 @@
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
-// ����(�л����񹲺͹�) resources
+// 中文(中华人民共和国) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
 #ifdef _WIN32
@@ -54,8 +54,8 @@ BEGIN
     "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)\r\n"
     "LANGUAGE 4, 2\r\n"
     "#pragma code_page(936)\r\n"
-    "#include ""res\\MHCD.rc2""  // �� Microsoft Visual C++ �༭����Դ\r\n"
-    "#include ""l.CHS\\afxres.rc""      // ��׼���\r\n"
+    "#include ""res\\MHCD.rc2""  // 非 Microsoft Visual C++ 编辑的资源\r\n"
+    "#include ""l.CHS\\afxres.rc""      // 标准组件\r\n"
     "#endif\r\n"
     "\0"
 END
@@ -79,15 +79,15 @@ IDR_MAINFRAME           ICON                    "res\\MHCD.ico"
 
 IDD_ABOUTBOX DIALOGEX 0, 0, 231, 90
 STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "���� MHCD"
+CAPTION "关于 MHCD"
 FONT 9, "MS Shell Dlg", 0, 0, 0x1
 BEGIN
     ICON            IDR_MAINFRAME,IDC_STATIC,14,14,20,20
     LTEXT           "MHCD  v0.3 ",IDC_STATIC,42,14,114,8,SS_NOPREFIX
-    LTEXT           "�ҵ�blog��http://hi.baidu.com/suwuhao",IDC_STATIC,42,34,119,18
-    DEFPUSHBUTTON   "ȷ��",IDOK,174,68,50,14,WS_GROUP
-    LTEXT           "���ߣ�suwuhao",IDC_STATIC,43,23,101,9
-    LTEXT           "��лaerialtime��õ�廨������coc3005 �Ľ���",IDC_STATIC,43,52,125,17
+    LTEXT           "我的blog：http://hi.baidu.com/suwuhao",IDC_STATIC,42,34,119,18
+    DEFPUSHBUTTON   "确定",IDOK,174,68,50,14,WS_GROUP
+    LTEXT           "作者：suwuhao",IDC_STATIC,43,23,101,9
+    LTEXT           "感谢aerialtime，玫瑰花的葬礼，coc3005 的建议",IDC_STATIC,43,52,125,17
 END
 
 IDD_MHCD_DIALOG DIALOGEX 0, 0, 319, 144
@@ -96,13 +96,13 @@ EXSTYLE WS_EX_APPWINDOW
 CAPTION "MapHackClickDetector"
 FONT 9, "MS Shell Dlg", 0, 0, 0x1
 BEGIN
-    DEFPUSHBUTTON   "ȷ��",IDOK,262,7,50,14,NOT WS_VISIBLE
-    PUSHBUTTON      "ȡ��",IDCANCEL,206,7,50,14,NOT WS_VISIBLE
+    DEFPUSHBUTTON   "确定",IDOK,262,7,50,14,NOT WS_VISIBLE
+    PUSHBUTTON      "取消",IDCANCEL,206,7,50,14,NOT WS_VISIBLE
     LISTBOX         IDC_LIST_MSG,7,7,305,95,LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
-    PUSHBUTTON      "��ʼ��",IDC_BUTTON_START,7,111,62,26
-    PUSHBUTTON      "���",IDC_BUTTON_LISTCLEAR,85,111,61,26
-    PUSHBUTTON      "ʹ��˵��",IDC_BUTTON_SHOWHELP,195,119,57,18
-    PUSHBUTTON      "����",IDC_BUTTON_SHOWABOUT,255,119,57,18
+    PUSHBUTTON      "初始化",IDC_BUTTON_START,7,111,62,26
+    PUSHBUTTON      "清空",IDC_BUTTON_LISTCLEAR,85,111,61,26
+    PUSHBUTTON      "使用说明",IDC_BUTTON_SHOWHELP,195,119,57,18
+    PUSHBUTTON      "关于",IDC_BUTTON_SHOWABOUT,255,119,57,18
 END
 
 
@@ -179,10 +179,10 @@ END
 
 STRINGTABLE 
 BEGIN
-    IDS_ABOUTBOX            "���� MHCD(&A)..."
+    IDS_ABOUTBOX            "关于 MHCD(&A)..."
 END
 
-#endif    // ����(�л����񹲺͹�) resources
+#endif    // 中文(中华人民共和国) resources
 /////////////////////////////////////////////////////////////////////////////
 
 
@@ -200,8 +200,8 @@ END
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
 LANGUAGE 4, 2
 #pragma code_page(936)
-#include "res\MHCD.rc2"  // �� Microsoft Visual C++ �༭����Դ
-#include "l.CHS\afxres.rc"      // ��׼���
+#include "res\MHCD.rc2"  // 非 Microsoft Visual C++ 编辑的资源
+#include "l.CHS\afxres.rc"      // 标准组件
 #endif
 
 /////////////////////////////////////////////////////////////////////////////

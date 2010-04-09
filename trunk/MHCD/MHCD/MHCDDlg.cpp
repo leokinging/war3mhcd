@@ -1,4 +1,4 @@
-// MHCDDlg.cpp : ÊµÏÖÎÄ¼ş
+// MHCDDlg.cpp : å®ç°æ–‡ä»¶
 //
 
 #include "stdafx.h"
@@ -15,20 +15,20 @@ BOOL MyTaskBarAddIcon(HWND hwnd, UINT uID, HICON hicon, LPSTR lpszTip) ;
 BOOL MyTaskBarDeleteIcon(HWND hwnd, UINT uID) ;
 int EnableDebugPriv(const char * name);
 DWORD FindTarget( LPCTSTR lpszProcess );
-// ÓÃÓÚÓ¦ÓÃ³ÌĞò¡°¹ØÓÚ¡±²Ëµ¥ÏîµÄ CAboutDlg ¶Ô»°¿ò
+// ç”¨äºåº”ç”¨ç¨‹åºâ€œå…³äºâ€èœå•é¡¹çš„ CAboutDlg å¯¹è¯æ¡†
 
 class CAboutDlg : public CDialog
 {
 public:
 	CAboutDlg();
 
-// ¶Ô»°¿òÊı¾İ
+// å¯¹è¯æ¡†æ•°æ®
 	enum { IDD = IDD_ABOUTBOX };
 
 	protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV Ö§³Ö
+	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV æ”¯æŒ
 
-// ÊµÏÖ
+// å®ç°
 protected:
 	DECLARE_MESSAGE_MAP()
 };
@@ -46,7 +46,7 @@ BEGIN_MESSAGE_MAP(CAboutDlg, CDialog)
 END_MESSAGE_MAP()
 
 
-// CMHCDDlg ¶Ô»°¿ò
+// CMHCDDlg å¯¹è¯æ¡†
 
 
 
@@ -79,15 +79,15 @@ BEGIN_MESSAGE_MAP(CMHCDDlg, CDialog)
 END_MESSAGE_MAP()
 
 
-// CMHCDDlg ÏûÏ¢´¦Àí³ÌĞò
+// CMHCDDlg æ¶ˆæ¯å¤„ç†ç¨‹åº
 
 BOOL CMHCDDlg::OnInitDialog()
 {
 	CDialog::OnInitDialog();
 
-	// ½«¡°¹ØÓÚ...¡±²Ëµ¥ÏîÌí¼Óµ½ÏµÍ³²Ëµ¥ÖĞ¡£
+	// å°†â€œå…³äº...â€èœå•é¡¹æ·»åŠ åˆ°ç³»ç»Ÿèœå•ä¸­ã€‚
 
-	// IDM_ABOUTBOX ±ØĞëÔÚÏµÍ³ÃüÁî·¶Î§ÄÚ¡£
+	// IDM_ABOUTBOX å¿…é¡»åœ¨ç³»ç»Ÿå‘½ä»¤èŒƒå›´å†…ã€‚
 	ASSERT((IDM_ABOUTBOX & 0xFFF0) == IDM_ABOUTBOX);
 	ASSERT(IDM_ABOUTBOX < 0xF000);
 
@@ -103,16 +103,16 @@ BOOL CMHCDDlg::OnInitDialog()
 		}
 	}
 
-	// ÉèÖÃ´Ë¶Ô»°¿òµÄÍ¼±ê¡£µ±Ó¦ÓÃ³ÌĞòÖ÷´°¿Ú²»ÊÇ¶Ô»°¿òÊ±£¬¿ò¼Ü½«×Ô¶¯
-	//  Ö´ĞĞ´Ë²Ù×÷
-	SetIcon(m_hIcon, TRUE);			// ÉèÖÃ´óÍ¼±ê
-	SetIcon(m_hIcon, FALSE);		// ÉèÖÃĞ¡Í¼±ê
+	// è®¾ç½®æ­¤å¯¹è¯æ¡†çš„å›¾æ ‡ã€‚å½“åº”ç”¨ç¨‹åºä¸»çª—å£ä¸æ˜¯å¯¹è¯æ¡†æ—¶ï¼Œæ¡†æ¶å°†è‡ªåŠ¨
+	//  æ‰§è¡Œæ­¤æ“ä½œ
+	SetIcon(m_hIcon, TRUE);			// è®¾ç½®å¤§å›¾æ ‡
+	SetIcon(m_hIcon, FALSE);		// è®¾ç½®å°å›¾æ ‡
 
 	CreateMutex(NULL,false,"MHCD by suwuhao");     
 	EnableDebugPriv(SE_DEBUG_NAME);
 	MyTaskBarAddIcon(this->GetSafeHwnd(),IDR_MAINFRAME,m_hIcon,"MapHackClickDetector by suwuhao");
 
-	return TRUE;  // ³ı·Ç½«½¹µãÉèÖÃµ½¿Ø¼ş£¬·ñÔò·µ»Ø TRUE
+	return TRUE;  // é™¤éå°†ç„¦ç‚¹è®¾ç½®åˆ°æ§ä»¶ï¼Œå¦åˆ™è¿”å› TRUE
 }
 
 void CMHCDDlg::OnSysCommand(UINT nID, LPARAM lParam)
@@ -130,25 +130,25 @@ void CMHCDDlg::OnSysCommand(UINT nID, LPARAM lParam)
 	else if(nID == SC_CLOSE)
 	{
 		if(FindTarget("war3.exe"))
-			AfxMessageBox("ÏÈ¹Ø±ÕWAR3");
+			AfxMessageBox("å…ˆå…³é—­WAR3");
 		else CDialog::OnSysCommand(nID, lParam);
 	}
 	else CDialog::OnSysCommand(nID, lParam);
 }
 
-// Èç¹ûÏò¶Ô»°¿òÌí¼Ó×îĞ¡»¯°´Å¥£¬ÔòĞèÒªÏÂÃæµÄ´úÂë
-//  À´»æÖÆ¸ÃÍ¼±ê¡£¶ÔÓÚÊ¹ÓÃÎÄµµ/ÊÓÍ¼Ä£ĞÍµÄ MFC Ó¦ÓÃ³ÌĞò£¬
-//  Õâ½«ÓÉ¿ò¼Ü×Ô¶¯Íê³É¡£
+// å¦‚æœå‘å¯¹è¯æ¡†æ·»åŠ æœ€å°åŒ–æŒ‰é’®ï¼Œåˆ™éœ€è¦ä¸‹é¢çš„ä»£ç 
+//  æ¥ç»˜åˆ¶è¯¥å›¾æ ‡ã€‚å¯¹äºä½¿ç”¨æ–‡æ¡£/è§†å›¾æ¨¡å‹çš„ MFC åº”ç”¨ç¨‹åºï¼Œ
+//  è¿™å°†ç”±æ¡†æ¶è‡ªåŠ¨å®Œæˆã€‚
 
 void CMHCDDlg::OnPaint()
 {
 	if (IsIconic())
 	{
-		CPaintDC dc(this); // ÓÃÓÚ»æÖÆµÄÉè±¸ÉÏÏÂÎÄ
+		CPaintDC dc(this); // ç”¨äºç»˜åˆ¶çš„è®¾å¤‡ä¸Šä¸‹æ–‡
 
 		SendMessage(WM_ICONERASEBKGND, reinterpret_cast<WPARAM>(dc.GetSafeHdc()), 0);
 
-		// Ê¹Í¼±êÔÚ¹¤×÷Çø¾ØĞÎÖĞ¾ÓÖĞ
+		// ä½¿å›¾æ ‡åœ¨å·¥ä½œåŒºçŸ©å½¢ä¸­å±…ä¸­
 		int cxIcon = GetSystemMetrics(SM_CXICON);
 		int cyIcon = GetSystemMetrics(SM_CYICON);
 		CRect rect;
@@ -156,7 +156,7 @@ void CMHCDDlg::OnPaint()
 		int x = (rect.Width() - cxIcon + 1) / 2;
 		int y = (rect.Height() - cyIcon + 1) / 2;
 
-		// »æÖÆÍ¼±ê
+		// ç»˜åˆ¶å›¾æ ‡
 		dc.DrawIcon(x, y, m_hIcon);
 	}
 	else
@@ -165,8 +165,8 @@ void CMHCDDlg::OnPaint()
 	}
 }
 
-//µ±ÓÃ»§ÍÏ¶¯×îĞ¡»¯´°¿ÚÊ±ÏµÍ³µ÷ÓÃ´Ëº¯ÊıÈ¡µÃ¹â±ê
-//ÏÔÊ¾¡£
+//å½“ç”¨æˆ·æ‹–åŠ¨æœ€å°åŒ–çª—å£æ—¶ç³»ç»Ÿè°ƒç”¨æ­¤å‡½æ•°å–å¾—å…‰æ ‡
+//æ˜¾ç¤ºã€‚
 HCURSOR CMHCDDlg::OnQueryDragIcon()
 {
 	return static_cast<HCURSOR>(m_hIcon);
@@ -179,12 +179,12 @@ void CMHCDDlg::OnBnClickedButtonListclear()
 }
 
 
-int EnableDebugPriv(const char * name)//ÌáÌáÈ¨º¯Êı
+int EnableDebugPriv(const char * name)//æææƒå‡½æ•°
 {
     HANDLE hToken;
     TOKEN_PRIVILEGES tp;
     LUID luid;
-    //´ò¿ª½ø³ÌÁîÅÆ»·
+    //æ‰“å¼€è¿›ç¨‹ä»¤ç‰Œç¯
     if(!OpenProcessToken(GetCurrentProcess(),
     TOKEN_ADJUST_PRIVILEGES|TOKEN_QUERY,
         &hToken))
@@ -192,7 +192,7 @@ int EnableDebugPriv(const char * name)//ÌáÌáÈ¨º¯Êı
         MessageBox(NULL,(LPCSTR)"OpenProcessToken Error!",(LPCSTR)"Error!",MB_OK);
             return 1;
     }
-    //»ñµÃ½ø³Ì±¾µØÎ¨Ò»ID
+    //è·å¾—è¿›ç¨‹æœ¬åœ°å”¯ä¸€ID
     if(!LookupPrivilegeValue(NULL,name,&luid))
     {
         MessageBox(NULL,(LPCSTR)"LookupPrivivlegeValue Error!",(LPCSTR)"Error",MB_OK);
@@ -200,7 +200,7 @@ int EnableDebugPriv(const char * name)//ÌáÌáÈ¨º¯Êı
     tp.PrivilegeCount=1;
     tp.Privileges[0].Attributes=SE_PRIVILEGE_ENABLED;
     tp.Privileges[0].Luid=luid;
-    //µ÷ÕûÈ¨ÏŞ
+    //è°ƒæ•´æƒé™
     if(!AdjustTokenPrivileges(hToken,0,&tp,sizeof(TOKEN_PRIVILEGES),NULL,NULL))
     {
         MessageBox(NULL,(LPCSTR)"AdjustTokenPrivileges Error!",(LPCSTR)"Error",MB_OK);
@@ -230,30 +230,30 @@ DWORD FindTarget( LPCTSTR lpszProcess )
 
 BOOL RemoteLoadLibrary( DWORD dwProcessID, LPCSTR lpszDll )
 {
-    // ´ò¿ªÄ¿±ê½ø³Ì
+    // æ‰“å¼€ç›®æ ‡è¿›ç¨‹
     HANDLE hProcess = OpenProcess( PROCESS_CREATE_THREAD | PROCESS_VM_OPERATION | PROCESS_VM_WRITE, FALSE, dwProcessID );
     
 	if(!hProcess)
 	{
-		AfxMessageBox( (LPCTSTR)"OpenProcessÊ§°Ü¡£");
+		AfxMessageBox( (LPCTSTR)"OpenProcesså¤±è´¥ã€‚");
 		return FALSE;
 	}
-	// ÏòÄ¿±ê½ø³ÌµØÖ·¿Õ¼äĞ´ÈëDLLÃû³Æ
+	// å‘ç›®æ ‡è¿›ç¨‹åœ°å€ç©ºé—´å†™å…¥DLLåç§°
     DWORD dwSize, dwWritten;
     dwSize = lstrlenA( lpszDll ) + 1;
     LPVOID lpBuf = VirtualAllocEx( hProcess, NULL, dwSize, MEM_COMMIT, PAGE_READWRITE );
     if ( NULL == lpBuf )
     {
-		AfxMessageBox( (LPCTSTR)"VirtualAllocExÊ§°Ü1¡£");
+		AfxMessageBox( (LPCTSTR)"VirtualAllocExå¤±è´¥1ã€‚");
         CloseHandle( hProcess );
         return FALSE;
     }
     if ( WriteProcessMemory( hProcess, lpBuf, (LPVOID)lpszDll, dwSize, &dwWritten ) )
     {
-        // ÒªĞ´Èë×Ö½ÚÊıÓëÊµ¼ÊĞ´Èë×Ö½ÚÊı²»ÏàµÈ£¬ÈÔÊôÊ§°Ü
+        // è¦å†™å…¥å­—èŠ‚æ•°ä¸å®é™…å†™å…¥å­—èŠ‚æ•°ä¸ç›¸ç­‰ï¼Œä»å±å¤±è´¥
         if ( dwWritten != dwSize )
         {
-			AfxMessageBox( (LPCTSTR)"VirtualAllocExÊ§°Ü2¡£");
+			AfxMessageBox( (LPCTSTR)"VirtualAllocExå¤±è´¥2ã€‚");
             VirtualFreeEx( hProcess, lpBuf, dwSize, MEM_DECOMMIT );
             CloseHandle( hProcess );
             return FALSE;
@@ -261,17 +261,17 @@ BOOL RemoteLoadLibrary( DWORD dwProcessID, LPCSTR lpszDll )
     }
     else
     {
-		AfxMessageBox( (LPCTSTR)"WriteProcessMemoryÊ§°Ü¡£");
+		AfxMessageBox( (LPCTSTR)"WriteProcessMemoryå¤±è´¥ã€‚");
         CloseHandle( hProcess );
         return FALSE;
     }
-    // Ê¹Ä¿±ê½ø³Ìµ÷ÓÃLoadLibrary£¬¼ÓÔØDLL
+    // ä½¿ç›®æ ‡è¿›ç¨‹è°ƒç”¨LoadLibraryï¼ŒåŠ è½½DLL
     DWORD dwID;
     LPVOID pFunc = LoadLibraryA;
     HANDLE hThread = CreateRemoteThread( hProcess, NULL, 0, (LPTHREAD_START_ROUTINE)pFunc, lpBuf, 0, &dwID );
-    // µÈ´ıLoadLibrary¼ÓÔØÍê±Ï
+    // ç­‰å¾…LoadLibraryåŠ è½½å®Œæ¯•
     //WaitForSingleObject( hThread, INFINITE );
-    // ÊÍ·ÅÄ¿±ê½ø³ÌÖĞÉêÇëµÄ¿Õ¼ä
+    // é‡Šæ”¾ç›®æ ‡è¿›ç¨‹ä¸­ç”³è¯·çš„ç©ºé—´
     //VirtualFreeEx( hProcess, lpBuf, dwSize, MEM_DECOMMIT );
     CloseHandle( hThread );
     CloseHandle( hProcess );
@@ -290,12 +290,12 @@ void CMHCDDlg::OnBnClickedButtonStart()
 	dwProcessID = FindTarget( (LPCTSTR)szTarget );
 	if ( 0 == dwProcessID )
 	{
-		AfxMessageBox( (LPCTSTR)"ÕÒ²»µ½Ä¿±ê½ø³Ì¡£");
+		AfxMessageBox( (LPCTSTR)"æ‰¾ä¸åˆ°ç›®æ ‡è¿›ç¨‹ã€‚");
 		//return;
 	}
 	else if ( !RemoteLoadLibrary( dwProcessID, (LPCSTR)"MHCD.dll" ) )
 	{
-		AfxMessageBox( (LPCTSTR)"Ô¶³ÌDLL¼ÓÔØÊ§°Ü¡£");
+		AfxMessageBox( (LPCTSTR)"è¿œç¨‹DLLåŠ è½½å¤±è´¥ã€‚");
 		//return;
 	}
 	else
@@ -318,9 +318,9 @@ BOOL CMHCDDlg::OnCopyData(CWnd* pWnd, COPYDATASTRUCT* pCopyDataStruct)
 
 void CMHCDDlg::OnBnClickedButtonShowhelp()
 {
-	CListMsg.AddString("°ÑexeºÍdll¿½µ½Ä§ÊŞÄ¿Â¼¡£ÔÚÃ¿´ÎÆô¶¯ÓÎÏ·ºóµã³õÊ¼»¯¾Í¿ÉÒÔÁË¡£");
-	CListMsg.AddString("Win7/VistaµÄÍ¬Ñ§Èç¹û²»ÊÇ´ÓÆ½Ì¨Æô¶¯Ä§ÊŞµÄ»°ÇëÒÔ¹ÜÀíÔ±È¨ÏŞÆô¶¯Ä§ÊŞ¡£");
-	CListMsg.AddString("ÃâÔğÉùÃ÷£ºÈÎºÎ¸öÈËºÍÍÅÌå²»ÄÜÊ¹ÓÃ´Ë³ÌĞòÓ¯Àû£¬×÷Õß²»³Ğµ£ÈÎºÎÓÉÊ¹ÓÃ±¾³ÌĞòÒıÆğµÄÒ»ÇĞºó¹û");
+	CListMsg.AddString("æŠŠexeå’Œdllæ‹·åˆ°é­”å…½ç›®å½•ã€‚åœ¨æ¯æ¬¡å¯åŠ¨æ¸¸æˆåç‚¹åˆå§‹åŒ–å°±å¯ä»¥äº†ã€‚");
+	CListMsg.AddString("Win7/Vistaçš„åŒå­¦å¦‚æœä¸æ˜¯ä»å¹³å°å¯åŠ¨é­”å…½çš„è¯è¯·ä»¥ç®¡ç†å‘˜æƒé™å¯åŠ¨é­”å…½ã€‚");
+	CListMsg.AddString("å…è´£å£°æ˜ï¼šä»»ä½•ä¸ªäººå’Œå›¢ä½“ä¸èƒ½ä½¿ç”¨æ­¤ç¨‹åºç›ˆåˆ©ï¼Œä½œè€…ä¸æ‰¿æ‹…ä»»ä½•ç”±ä½¿ç”¨æœ¬ç¨‹åºå¼•èµ·çš„ä¸€åˆ‡åæœ");
 	CListMsg.SetTopIndex(CListMsg.GetCount() - 1);
 }
 
@@ -368,7 +368,7 @@ afx_msg LRESULT CMHCDDlg::OnMyIconNotify(WPARAM wParam, LPARAM lParam)
 	UINT uMouseMsg; 
 	nID = (UINT)wParam;
     uMouseMsg = (UINT) lParam; 
-	if (uMouseMsg == WM_LBUTTONDOWN) //µã»÷Í¼±ê
+	if (uMouseMsg == WM_LBUTTONDOWN) //ç‚¹å‡»å›¾æ ‡
 	{ 
 	ShowWindow( SW_SHOWNORMAL );
 	SetWindowPos(&wndTopMost,0,0,0,0,SWP_NOMOVE|SWP_NOSIZE);
@@ -380,6 +380,6 @@ void CMHCDDlg::OnDestroy()
 {
 	CDialog::OnDestroy();
 
-	// TODO: ÔÚ´Ë´¦Ìí¼ÓÏûÏ¢´¦Àí³ÌĞò´úÂë
+	// TODO: åœ¨æ­¤å¤„æ·»åŠ æ¶ˆæ¯å¤„ç†ç¨‹åºä»£ç 
 	MyTaskBarDeleteIcon(GetSafeHwnd(),IDR_MAINFRAME);
 }
